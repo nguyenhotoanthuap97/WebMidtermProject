@@ -1,4 +1,4 @@
-.floatleft { float: left }
+Fs.floatleft { float: left }
 .floatright { float: right }
 .alignleft {
     float: left;
@@ -27,7 +27,7 @@ h6 {
     font-weight: 700;
     margin: 0 0 15px;
 }
-body { font-family: 'Titillium Web', sans-serif; }
+body { font-family: "Open Sans",sans-serif; }
 
 
 
@@ -256,9 +256,10 @@ z-index: 9;
 .single-promo:hover {color: #fff;background: #222;border-color: #222}
 
 .section-title {
-  font-family: "Raleway",sans-serif;
+  font-family: "Open Sans",sans-serif;
   font-size: 50px;
   font-weight: 100;
+  margin-top: 50px;
   margin-bottom: 50px;
   text-align: center;
 }
@@ -373,7 +374,7 @@ z-index: 9;
 .maincontent-area {padding-bottom: 170px}
 
 .product-wid-title {
-  font-family: raleway;
+  font-family: "Open Sans Condensed",sans-serif;
   font-size: 30px;
   font-weight: 100;
   margin-bottom: 40px;
