@@ -1004,3 +1004,54 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
 .pagination > li > a, .pagination > li > span {
   color: #1abc9c;
 }
+
+/* Phần này cho single product */
+.ty-product-feature-group {
+    margin-bottom: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+div {
+    display: block;
+}
+
+#content_features .ty-subheader{
+    padding: 7px 0 5px 10px;
+    background: #dedddd;
+    color: #b10021;
+}
+
+
+#content_features .ty-product-feature-group :nth-child(even){
+    background-color: #f7f7f7;
+}
+
+
+.ty-product-feature__label {
+    display: inline-block;
+    width: 280px;
+}
+
+.ty-product-feature {
+    padding:10px;
+}
+#content_features .ty-product-feature .ty-product-feature__label {
+   font-size: 13px;
+   color: #545454;
+   font-weight: bold;
+}
+
+.ty-product-feature__value {
+    display: inline-block;
+}
+
+#content_features .ty-product-feature .ty-product-feature__value {
+    font-size: 13px;
+    font-weight: normal;
+}
+
+#product-config {
+    color: blue;
+}
+
+/*  */
