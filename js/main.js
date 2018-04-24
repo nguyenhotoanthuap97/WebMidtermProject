@@ -92,19 +92,16 @@ jQuery(document).ready(function ($) {
         var selected = $(this).text();
         $('.dropdown-text').text(selected);
         $('#search-input').attr('placeholder', "Tên " + selected + "...");
-    });
+    }); 
 
-    //Price slider
-    $("#slider-range").slider({
-        range: true,
-        min: 0,
-        max: 2000,
-        values: [100, 1500],
-        slide: function (event, ui) {
-            $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
-        }
-    });
-    $("#amount").val("$" + $("#slider-range").slider("values", 0) +
-        " - $" + $("#slider-range").slider("values", 1));
+    //hide other address
+    $(".shipping_address").hide(); 
 });
 
+function otherAddress()
+{
+    if($(".input-checkbox").is(":checked"))
+        $(".shipping_address").show();
+    else
+        $(".shipping_address").hide();        
+} 

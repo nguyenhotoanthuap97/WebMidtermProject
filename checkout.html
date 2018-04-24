@@ -97,7 +97,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="product-bit-title text-center">
-                        <h2>Checking out</h2>
+                        <h2>Check out</h2>
                     </div>
                 </div>
             </div>
@@ -112,37 +112,8 @@
                 <div class="col-md-12">
                     <div class="product-content-right">
                         <div class="woocommerce">
-                            <div class="woocommerce-info">Chưa đăng nhập ? <a class="showlogin" data-toggle="collapse" href="#login-form-wrap" aria-expanded="false" aria-controls="login-form-wrap">Đăng nhập nhanh</a>
+                            <div class="woocommerce-info">Chưa đăng nhập ? <a href="#" data-toggle="modal" data-target="#Login">Đăng nhập nhanh</a>
                             </div>
-
-                            <form id="login-form-wrap" class="login collapse" method="post">
-                                <p>Nếu bạn đã từng mua hàng trước đây, hãy điền thông tin của bạn vào bên dưới. &amp;</p>
-
-                                <p class="form-row form-row-first">
-                                    <label for="username">Tên đăng nhập hoặc email <span class="required">*</span>
-                                    </label>
-                                    <input type="text" id="username" name="username" class="input-text">
-                                </p>
-                                <p class="form-row form-row-last">
-                                    <label for="password">Mật khẩu <span class="required">*</span>
-                                    </label>
-                                    <input type="password" id="password" name="password" class="input-text">
-                                </p>
-                                <div class="clear"></div>
-
-
-                                <p class="form-row">
-                                    <input type="submit" value="Đăng nhập" name="login" class="button">
-                                    <label class="inline" for="rememberme"><input type="checkbox" value="forever" id="rememberme" name="rememberme"> Nhớ mật khẩu </label>
-                                </p>
-                                <p class="lost_password">
-                                    <a href="#">Quên mật khẩu?</a>
-                                </p>
-
-                                <div class="clear"></div>
-                            </form>
-
-
 
                             <form enctype="multipart/form-data" action="#" class="checkout" method="post" name="checkout">
 
@@ -459,7 +430,7 @@
                                         <div class="woocommerce-shipping-fields">
                                             <h3 id="ship-to-different-address">
                         <label class="checkbox" for="ship-to-different-address-checkbox">Giao hàng đến địa chỉ khác</label>
-                        <input type="checkbox" value="1" name="ship_to_different_address" checked="checked" class="input-checkbox" id="ship-to-different-address-checkbox">
+                        <input type="checkbox" value="0" name="ship_to_different_address" class="input-checkbox" id="ship-to-different-address-checkbox" onchange="otherAddress()">
                         </h3>
                                             <div class="shipping_address" style="display: block;">
                                                 <p id="shipping_country_field" class="form-row form-row-wide address-field update_totals_on_change validate-required woocommerce-validated">
@@ -944,8 +915,8 @@
                                 <div style="margin-top:10px" class="form-group">
                                     <!-- Button -->
                                     <div class="col-sm-12 controls">
-                                        <a id="btn-login" href="#" class="btn btn-success" onclick="ChangeToUser($('#login-username').val())" data-dismiss="modal">Đăng nhập</a>
-                                        <a id="btn-fblogin" href="#" class="btn btn-primary" onclick = "ChangeToUser($('#login-username').val())" data-dismiss="modal">Đăng nhập bằng Facebook</a>
+                                        <a id="btn-login" href="#" class="btn btn-success" onclick="ChangeToUser_checkout($('#login-username').val())" data-dismiss="modal">Đăng nhập</a>
+                                        <a id="btn-fblogin" href="#" class="btn btn-primary" onclick = "ChangeToUser_checkout($('#login-username').val())" data-dismiss="modal">Đăng nhập bằng Facebook</a>
                                     </div>
                                 </div>
 
@@ -1051,5 +1022,6 @@
     <!-- Main Script -->
     <script src="js/main.js"></script>
     <script src="js/login.js" ></script>
+    
   </body>
 </html>
