@@ -1114,16 +1114,46 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
     background-color: #01bc9c;
 }
 
-.dell, .asus, .acer, .hp, .lenovo, .apple {
-    cursor: pointer;
+.dell, .asus, .acer, .hp, .lenovo, .apple, .business, .gaming, .workstation {
+    display: inline;
+    margin-left: 10px;
+    padding: 10px 0;
+    padding-right: 120px;
 }
 
-.dell:hover, .asus:hover, .acer:hover, .hp:hover, .lenovo:hover, .apple:hover {
+.list-group-item {
+    cursor: pointer;    
+}
+
+.dell:hover, .asus:hover, .acer:hover, .hp:hover, .lenovo:hover, .apple:hover, .business:hover, .gaming:hover, .workstation:hover, .list-group-item.click-box:hover {
     background-color: #01bc9c;
     color: white;
     font-weight: 700;    
 }
+
+.checkbox-btn {
+    display: inline;
+}
+
+.filter-btn {
+    background-color: #01bc9c;
+    color: white;
+    font-weight: 700;
+    width: 100px;
+    margin-left: 80px;
+}
+
 /* Phần này cho single product */
+/*sign in*/
+#signinlink {
+    color: #f7f7f7;
+}
+/* Phần này cho single product và second-product*/
+#intro-product {
+    font-size: 16px;
+    font-weight: bold;
+    font-style: oblique;
+}
 .ty-product-feature-group {
     margin-bottom: 10px;
     font-family: Arial, Helvetica, sans-serif;

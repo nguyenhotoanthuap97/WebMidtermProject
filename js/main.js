@@ -92,7 +92,36 @@ jQuery(document).ready(function ($) {
         var selected = $(this).text();
         $('.dropdown-text').text(selected);
         $('#search-input').attr('placeholder', "Tên " + selected + "...");
-    });
+    }); 
+
+    //hide other address
+    $(".shipping_address").hide(); 
+
+    //search Enter
+    $('#search-input').keypress(function(k) {
+        if (k.which === 13) {
+            var val = $('#search-input').val();
+            window.location.replace("./shop.html#search-result");
+        }
+    })
+
+    //search btn press
+    $('.click').bind('click', function(event) {
+        var val = $('#search-input').val();
+        window.location.replace("./shop.html#search-result");
+    })
+
+    //brand filter click
+    $('.brand').bind('click', function(event) {
+        var type = $(this).text();
+        alert("Bạn lọc theo hãng " + type);
+    })
+
+    //class filter click
+    $('.classify').bind('click', function(event) {
+        var type = $(this).text();
+        alert("Bạn lọc theo chủng loại " + type);
+    })
 
     //Price slider
     $("#slider-range").slider({
@@ -108,3 +137,10 @@ jQuery(document).ready(function ($) {
         " - $" + $("#slider-range").slider("values", 1));
 });
 
+function otherAddress()
+{
+    if($(".input-checkbox").is(":checked"))
+        $(".shipping_address").show();
+    else
+        $(".shipping_address").hide();        
+} 
