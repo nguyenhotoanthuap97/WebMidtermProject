@@ -154,7 +154,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="product-bit-title text-center">
+                    <div class="product-bit-title text-center" id="search-result">
                         <h2>Shop</h2>
                     </div>
                 </div>
@@ -175,12 +175,51 @@
                             </h3>
                         </div>
                         <div class="list-group">
-                            <p class="dell list-group-item">DELL</p>
-                            <p class="asus list-group-item">ASUS</p>
-                            <p class="lenovo list-group-item">LENOVO</p>
-                            <p class="hp list-group-item">HP</p>
-                            <p class="acer list-group-item">ACER</p>
-                            <p class="apple list-group-item">APPLE</p>
+                            <div class="list-group-item click-box">
+                                <input type="checkbox" class="dell-checkbox checkbox-btn" checked>
+                                <p class="dell brand">DELL</p>
+                            </div>
+                            <div class="list-group-item click-box">
+                                <input type="checkbox" class="asus-checkbox checkbox-btn" checked>
+                                <p class="asus brand">ASUS</p>
+                            </div>
+                            <div class="list-group-item click-box">
+                                <input type="checkbox" class="lenovo-checkbox checkbox-btn" checked>
+                                <p class="lenovo brand">LENOVO</p>
+                            </div>
+                            <div class="list-group-item click-box">
+                                <input type="checkbox" class="hp-checkbox checkbox-btn" checked>
+                                <p class="hp brand">HP</p>
+                            </div>
+                            <div class="list-group-item click-box">
+                                <input type="checkbox" class="acer-checkbox checkbox-btn" checked>
+                                <p class="acer brand">ACER</p>
+                            </div>
+                            <div class="list-group-item click-box">
+                                <input type="checkbox" class="apple-checkbox checkbox-btn" checked>
+                                <p class="apple brand">APPLE</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                <strong>Chủng loại laptop</strong>
+                            </h3>
+                        </div>
+                        <div class="list-group">
+                            <div class="list-group-item click-box">
+                                <input type="checkbox" class="business-checkbox checkbox-btn" checked>
+                                <p class="business classify">Business</p>
+                            </div>
+                            <div class="list-group-item click-box">
+                                <input type="checkbox" class="gaming-checkbox checkbox-btn" checked>
+                                <p class="gaming classify">Gaming</p>
+                            </div>
+                            <div class="list-group-item click-box">
+                                <input type="checkbox" class="workstation-checkbox checkbox-btn" checked>
+                                <p class="workstation classify">Workstation</p>
+                            </div>
                         </div>
                     </div>
                     <div class="panel panel-default">
@@ -199,6 +238,7 @@
                             </div>
                         </div>
                     </div>
+                    <button type="button" class="btn btn-default filter-btn">Lọc</button>
                 </div>
                 <div class="col-md-9 col-sm-12">
                     <div class="col-md-3 col-sm-6">
