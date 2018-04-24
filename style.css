@@ -1123,6 +1123,10 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
     color: white;
     font-weight: 700;    
 }
+/*sign in*/
+#signinlink {
+    color: #f7f7f7;
+}
 /* Phần này cho single product */
 .ty-product-feature-group {
     margin-bottom: 10px;
