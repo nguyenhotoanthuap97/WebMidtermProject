@@ -92,7 +92,10 @@ jQuery(document).ready(function ($) {
         var selected = $(this).text();
         $('.dropdown-text').text(selected);
         $('#search-input').attr('placeholder', "Tên " + selected + "...");
-    });
+    }); 
+
+    //hide other address
+    $(".shipping_address").hide(); 
 
     //search Enter
     $('#search-input').keypress(function(k) {
@@ -133,3 +136,11 @@ jQuery(document).ready(function ($) {
     $("#amount").val("$" + $("#slider-range").slider("values", 0) +
         " - $" + $("#slider-range").slider("values", 1));
 });
+
+function otherAddress()
+{
+    if($(".input-checkbox").is(":checked"))
+        $(".shipping_address").show();
+    else
+        $(".shipping_address").hide();        
+} 

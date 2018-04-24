@@ -1144,6 +1144,16 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
 }
 
 /* Phần này cho single product */
+/*sign in*/
+#signinlink {
+    color: #f7f7f7;
+}
+/* Phần này cho single product và second-product*/
+#intro-product {
+    font-size: 16px;
+    font-weight: bold;
+    font-style: oblique;
+}
 .ty-product-feature-group {
     margin-bottom: 10px;
     font-family: Arial, Helvetica, sans-serif;
