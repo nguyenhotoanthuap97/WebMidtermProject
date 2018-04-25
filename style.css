@@ -200,6 +200,11 @@ body {
     background: #222
 }
 
+div.navbar-nav li.active
+{
+    background:#f0f0f0;
+}
+
 .mainmenu-area .nav>li>a:focus {
     color: #000
 }
