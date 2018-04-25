@@ -44,6 +44,25 @@ function ChangeToGuess_checkout()
 function ChangeToUser_checkout(username)
 {
     localStorage.setItem('username', username);
+    if (username === 'admin' && password === '123456') {
+        window.location = 'admin.html';
+    }
+
+    if (username === '') {
+        $('#error_login').text('Vui lòng nhập username');
+        return;
+    }
+    else if (password === '') {
+        $('#error_login').text('Vui lòng nhập password');
+        return;
+    }
+    else {
+        $('#login-username').val('');
+        $('#login-password').val('');
+        $('#error_login').text('');
+        $('#Login').modal('hide');
+    }
+    
     $(".woocommerce-info").hide();
     $("#tool-bar").prepend('<li id ="acount-tag"><a href="profile_user.html" target="_blank"><i class="fa fa-user"></i>Tài khoản: '+username+' </a></li>');
     $("#login-tag").remove();
