@@ -1,7 +1,6 @@
 ﻿function ChangeToUser(username, password)
 {
     localStorage.setItem('username', username);
-    $("#tool-bar").prepend('<li id ="acount-tag"><a href="profile_user.html" target="_blank"><i class="fa fa-user"></i>Tài khoản: '+username+' </a></li>');
     if (username === 'admin' && password === '123456') {
         window.location = 'admin.html';
     }
