@@ -67,8 +67,7 @@
                 <div class="col-sm-6">
                     <div class="logo">
                         <h1>
-                            <a href="index.html">e
-                                <span>Electronics</span>
+                            <a href="index.html">e<span>Electronics</span>
                             </a>
                         </h1>
                     </div>
@@ -1087,7 +1086,7 @@
                             <div class="panel-heading">
                                 <div class="panel-title">Đăng nhập</div>
                                 <div style="float:right; font-size: 80%; position: relative; top:-10px">
-                                    <a href="#">Quên mật khẩu?</a>
+                                    <a href="#" style="color: #fff">Quên mật khẩu?</a>
                                 </div>
                             </div>
 
@@ -1101,12 +1100,14 @@
                                         <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="Tên hoặc email">
                                     </div>
 
-                                    <div style="margin-bottom: 25px" class="input-group">
+                                    <div style="margin-bottom: 15px" class="input-group">
                                         <span class="input-group-addon">
                                             <i class="glyphicon glyphicon-lock"></i>
                                         </span>
                                         <input id="login-password" type="password" class="form-control" name="password" placeholder="Mật khẩu">
                                     </div>
+
+                                    <div id="error_login" style="color: red;"></div>
 
                                     <div class="input-group">
                                         <div class="checkbox">
@@ -1119,8 +1120,8 @@
                                     <div style="margin-top:10px" class="form-group">
                                         <!-- Button -->
                                         <div class="col-sm-12 controls">
-                                            <a id="btn-login" href="#" class="btn btn-success" onclick="ChangeToUser($('#login-username').val())" data-dismiss="modal">Đăng nhập</a>
-                                            <a id="btn-fblogin" href="#" class="btn btn-primary" onclick="ChangeToUser($('#login-username').val())" data-dismiss="modal">Đăng nhập bằng Facebook</a>
+                                            <a id="btn-login" href="#" class="btn btn-success" onclick="ChangeToUser($('#login-username').val(), $('#login-password').val())">Đăng nhập</a>
+                                            <a id="btn-fblogin" href="#" class="btn btn-primary" onclick="ChangeToUser($('#login-username').val(),$('#login-password').val())">Đăng nhập bằng Facebook</a>
                                         </div>
                                     </div>
 
@@ -1188,8 +1189,6 @@
 
                                     <div class="form-group">
                                         <div style="margin-left: 28%" class="g-recaptcha" data-sitekey="6LcW5FQUAAAAADc0vcmMU73fcBz-j4n0lavXM_Vu" data-callback="verifyRecaptchaCallback" data-expired-callback="expiredRecaptchaCallback"></div>
-                                        <!--<input class="form-control d-none" data-recaptcha="true" required data-error="Please complete the Captcha">
-                                        <div class="help-block with-errors"></div>-->
                                     </div>
     
                                     <div class="form-group">
