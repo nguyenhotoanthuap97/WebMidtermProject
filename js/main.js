@@ -97,6 +97,33 @@ jQuery(document).ready(function ($) {
     //hide other address
     $(".shipping_address").hide(); 
 
+    //search Enter
+    $('#search-input').keypress(function(k) {
+        if (k.which === 13) {
+            var val = $('#search-input').val();
+            window.location.replace("./shop.html#search-result");
+        }
+    })
+
+    //search btn press
+    $('.click').bind('click', function(event) {
+        var val = $('#search-input').val();
+        window.location.replace("./shop.html#search-result");
+    })
+
+    //brand filter click
+    $('.brand').bind('click', function(event) {
+        var type = $(this).text();
+        alert("Bạn lọc theo hãng " + type);
+    })
+
+    //class filter click
+    $('.classify').bind('click', function(event) {
+        var type = $(this).text();
+        alert("Bạn lọc theo chủng loại " + type);
+    })
+
+    //Price slider
     $("#slider-range").slider({
         range: true,
         min: 0,

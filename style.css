@@ -1473,17 +1473,37 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button {
     cursor: pointer;
 }
 
-.dell:hover,
-.asus:hover,
-.acer:hover,
-.hp:hover,
-.lenovo:hover,
-.apple:hover {
+.dell, .asus, .acer, .hp, .lenovo, .apple, .business, .gaming, .workstation 
+{
+    display: inline;
+    margin-left: 10px;
+    padding: 10px 0;
+    padding-right: 120px;
+}
+
+.list-group-item {
+    cursor: pointer;    
+}
+
+.dell:hover, .asus:hover, .acer:hover, .hp:hover, .lenovo:hover, .apple:hover, .business:hover, .gaming:hover, .workstation:hover, .list-group-item.click-box:hover {
     background-color: #01bc9c;
     color: white;
     font-weight: 700;
 }
 
+.checkbox-btn {
+    display: inline;
+}
+
+.filter-btn {
+    background-color: #01bc9c;
+    color: white;
+    font-weight: 700;
+    width: 100px;
+    margin-left: 80px;
+}
+
+/* Phần này cho single product */
 
 /*sign in*/
 
@@ -1494,6 +1514,13 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button {
 
 /* Phần này cho single product */
 
+=======
+/* Phần này cho single product và second-product*/
+#intro-product {
+    font-size: 16px;
+    font-weight: bold;
+    font-style: oblique;
+}
 .ty-product-feature-group {
     margin-bottom: 10px;
     font-family: Arial, Helvetica, sans-serif;
@@ -1656,5 +1683,114 @@ table.table-responsive-2 tfoot tr td span.sum {
 }
 
 
+
+/*  */
+.maincontent-area .container {
+    background-color: #f4f4f4; 
+    padding-top: 2%;
+    padding-bottom: -2%;
+}
+
+.maincontent-area .list-group {
+    padding-left: 0;
+    margin-bottom: 5%;
+}
+
+.maincontent-area .badge{
+    display: inline-block;
+    font-size: 12px;
+    color: #fff;
+    text-align: center;
+    background-color: #777;
+    border-radius: 10px
+}
+
+.maincontent-area .info-box {
+    min-height: 100px;
+    margin-bottom: 30px;
+    padding: 5px;
+    border-radius: 3%;
+}
+    .maincontent-area .info-box i {
+        font-size: 60px;
+        padding-top: 10%;
+        float: left;
+        text-align: center;
+        color: rgba(255,255,255,0.75);
+    }
+
+    .info-box .count {
+        float: right;
+        margin-top: 10px;
+        font-size: 34px;
+        font-weight: 700;
+    }
+
+    .info-box .title {
+        float: right;
+        font-size: 12px;
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+
+    .blue-bg {
+        color: #fff;
+        background-color: #57889c;
+    }
+
+    .brown-bg {
+        color: #fff;
+        background-color: #d1b993;
+    }
+
+    .dark-bg {
+        color: #fff;
+        background-color: #1a2732;
+    }
+
+    .purple-bg {
+        color: #fff;
+        background-color: #952b6c;
+    }
+
+    .social-box {
+        min-height: 158px;
+        background: white;
+        margin-bottom: 10%;
+        text-align: center;
+        border-radius: 3%;
+    }
+
+    .social-box i {
+        width: 100%;
+        display: block;
+        font-size: 40px;
+        padding-bottom: 9%;
+        color: white;
+        padding-top: 10%;
+        border-radius: 3% 3% 0 0;
+        
+    }
+
+    .social-box .row div {
+        margin-bottom: 3%;
+    }
+
+    .social-box .row div:nth-child(1) {
+        padding-left: 10%;
+        margin-top: 4%;
+    }
+
+    .social-box .row div:nth-child(2) {
+        padding-right: 10%;
+        margin-top: 4%;        
+    }
+
+    .social-box strong {
+        display: block;
+        font-size: 20px;
+        padding-top: 8%;
+        padding-bottom: 5%;
+    }
 
 /*  */
