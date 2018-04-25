@@ -415,6 +415,8 @@
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                                     <input id="login-password" type="password" class="form-control" name="password" placeholder="Mật khẩu">
                                 </div>
+
+                                <div id="error_login" style="color: red;"></div>
                                 
                                 <div class="input-group">
                                     <div class="checkbox">
@@ -427,8 +429,8 @@
                                 <div style="margin-top:10px" class="form-group">
                                     <!-- Button -->
                                     <div class="col-sm-12 controls">
-                                        <a id="btn-login" href="#" class="btn btn-success" onclick="ChangeToUser_checkout($('#login-username').val())" data-dismiss="modal">Đăng nhập</a>
-                                        <a id="btn-fblogin" href="#" class="btn btn-primary" onclick = "ChangeToUser_checkout($('#login-username').val())" data-dismiss="modal">Đăng nhập bằng Facebook</a>
+                                        <a id="btn-login" href="#" class="btn btn-success" onclick="ChangeToUser($('#login-username').val(), $('#login-password').val())">Đăng nhập</a>
+                                        <a id="btn-fblogin" href="#" class="btn btn-primary" onclick="ChangeToUser($('#login-username').val(),$('#login-password').val())">Đăng nhập bằng Facebook</a>
                                     </div>
                                 </div>
 
