@@ -347,6 +347,11 @@ div.navbar-nav li.active
     padding: 0px 0 200px;
 }
 
+.brands-area img {
+    width: 270px;
+    height: 120px;
+}
+
 .promo-area .zigzag-bottom,
 .brands-area .zigzag-bottom {
     background: #fff
