@@ -417,10 +417,9 @@ div.navbar-nav li.active
     border-radius: 5px;
     color: #fff;
     display: block;
-    font-size: 16px;
+    font-size: 13px;
     left: 10%;
-    margin: 0;
-    padding: 10px;
+    padding: 7px;
     position: absolute;
     text-align: center;
     text-transform: uppercase;
