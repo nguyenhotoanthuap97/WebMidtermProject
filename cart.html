@@ -321,7 +321,7 @@
                     <div class="panel panel-info" >
                         <div class="panel-heading">
                             <div class="panel-title">Đăng nhập</div>
-                            <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Quên mật khẩu?</a></div>
+                            <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#" style="color: #fff">Quên mật khẩu?</a></div>
                         </div>     
         
                         <div style="padding-top:30px" class="panel-body" >
@@ -412,6 +412,10 @@
                                             <input type="text" class="form-control" name="icode" placeholder="">
                                         </div>
                                     </div>
+
+                                    <div class="form-group">
+                                        <div style="margin-left: 28%" class="g-recaptcha" data-sitekey="6LcW5FQUAAAAADc0vcmMU73fcBz-j4n0lavXM_Vu" data-callback="verifyRecaptchaCallback" data-expired-callback="expiredRecaptchaCallback"></div>
+                                    </div>
     
                                     <div class="form-group">
                                         <!-- Button -->                                        
@@ -426,9 +430,7 @@
                                         <div class="col-md-offset-3 col-md-9">
                                             <button id="btn-fbsignup" type="button" class="btn btn-primary"><i class="icon-facebook"></i>Đăng ký bằng Facebook</button>
                                             <button id="btn-fbsignup" type="button" class="btn btn-danger"><i class="icon-google"></i>Đăng ký bằng Google</button>
-                                        </div>                                           
-                                                       
-                                                
+                                        </div>
                                     </div>
                                 </form>
                             </div>
@@ -452,6 +454,9 @@
     <!-- jQuery easing -->
     <script src="js/jquery.easing.1.3.min.js"></script>
     
+    <!--JS Recapcha-->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
     <!-- Main Script -->
     <script src="js/main.js"></script>
     <script src="js/login.js" ></script>
