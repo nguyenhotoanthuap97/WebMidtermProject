@@ -1114,7 +1114,7 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
     background-color: #01bc9c;
 }
 
-.dell, .asus, .acer, .hp, .lenovo, .apple, .business, .gaming, .workstation {
+.dell, .asus, .acer, .hp, .msi, .apple, .business, .gaming, .workstation {
     display: inline;
     margin-left: 10px;
     padding: 10px 0;
@@ -1125,7 +1125,7 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button{background
     cursor: pointer;    
 }
 
-.dell:hover, .asus:hover, .acer:hover, .hp:hover, .lenovo:hover, .apple:hover, .business:hover, .gaming:hover, .workstation:hover, .list-group-item.click-box:hover {
+.dell:hover, .asus:hover, .acer:hover, .hp:hover, .msi:hover, .apple:hover, .business:hover, .gaming:hover, .workstation:hover, .list-group-item.click-box:hover {
     background-color: #01bc9c;
     color: white;
     font-weight: 700;    
@@ -1200,6 +1200,14 @@ div {
 
 #product-config {
     color: blue;
+}
+
+.product-upper {
+    width: 100%;
+}
+
+.product-img {
+    width: 100%;
 }
 
 /*  */
