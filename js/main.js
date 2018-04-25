@@ -241,7 +241,7 @@ var products = [{
     },
     {
         name: "HP Pavilion 1",
-        image: "./img/HP1.jpg",
+        image: "./img/Hp1.jpg",
         price: 599,
         orginprice: 659,
         brand: "HP",
@@ -249,7 +249,7 @@ var products = [{
     },
     {
         name: "HP Pavilion 2",
-        image: "./img/HP2.jpg",
+        image: "./img/Hp2.jpg",
         price: 659,
         orginprice: 699,
         brand: "HP",
@@ -257,7 +257,7 @@ var products = [{
     },
     {
         name: "HP Pavilion 3",
-        image: "./img/HP3.jpg",
+        image: "./img/Hp3.jpg",
         price: 569,
         orginprice: 599,
         brand: "HP",
@@ -265,7 +265,7 @@ var products = [{
     },
     {
         name: "HP Pavilion 4",
-        image: "./img/HP4.jpg",
+        image: "./img/Hp4.jpg",
         price: 699,
         orginprice: 739,
         brand: "HP",
@@ -273,7 +273,7 @@ var products = [{
     },
     {
         name: "HP Pavilion 5",
-        image: "./img/HP5.jpg",
+        image: "./img/Hp5.jpg",
         price: 669,
         orginprice: 689,
         brand: "HP",
@@ -281,7 +281,7 @@ var products = [{
     },
     {
         name: "HP Envy 6",
-        image: "./img/HP6.jpg",
+        image: "./img/Hp6.jpg",
         price: 789,
         orginprice: 799,
         brand: "HP",
@@ -289,7 +289,7 @@ var products = [{
     },
     {
         name: "HP Envy 7",
-        image: "./img/HP7.jpg",
+        image: "./img/Hp7.jpg",
         price: 899,
         orginprice: 929,
         brand: "HP",
@@ -297,7 +297,7 @@ var products = [{
     },
     {
         name: "HP Envy 8",
-        image: "./img/HP8.jpg",
+        image: "./img/Hp8.jpg",
         price: 999,
         orginprice: 1069,
         brand: "HP",
@@ -305,7 +305,7 @@ var products = [{
     },
     {
         name: "HP Workstation 9",
-        image: "./img/HP9.jpg",
+        image: "./img/Hp9.jpg",
         price: 1899,
         orginprice: 1999,
         brand: "HP",
@@ -313,7 +313,7 @@ var products = [{
     },
     {
         name: "HP OMEN X10",
-        image: "./img/HP10.jpg",
+        image: "./img/Hp10.jpg",
         price: 2049,
         orginprice: 2199,
         brand: "HP",

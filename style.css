@@ -1222,7 +1222,7 @@ div.cart-collaterals ul.products li.product .price ins {
 }
 
 .col2-set {
-    margin-left: -30px;
+    margin-left: 0;
     overflow: hidden;
 }
 
@@ -1257,11 +1257,18 @@ div.cart-collaterals ul.products li.product .price ins {
     padding: 15px;
 }
 
-#order_review_heading {
-    color: #1abc9c;
-    font-size: 20px;
-    text-transform: uppercase;
+#order_review {
+    position: relative; 
+    padding-left: 15px; 
+    padding-right:15px;
+    margin-top: 2%;
 }
+
+    #order_review_heading {
+        color: #1abc9c;
+        font-size: 20px;
+        text-transform: uppercase;
+    }
 
 #payment ul.payment_methods {
     list-style: outside none none;
