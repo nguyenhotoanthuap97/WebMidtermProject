@@ -609,7 +609,11 @@ jQuery(document).ready(function ($) {
         ListFinal = ListTypes.filter(function(product) {
                 return min <= product.price && product.price <= max;
                 })
-        displayProducts(ListFinal);
+        if (ListFinal.length === 0) {
+                $(".product-list").html('<h4 style="color: red;">Không tìm thấy sản phẩm</h4>');                
+            }
+        else
+            displayProducts(ListFinal);
     })
 
     //Price slider
