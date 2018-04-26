@@ -572,6 +572,15 @@ jQuery(document).ready(function ($) {
         displayProducts(ListProducts);
     })
 
+    $('.filter-btn').bind('click', function(event) {
+        let min = $("#slider-range").slider("values", 0);
+        let max = $("#slider-range").slider("values", 1);
+        let ListProducts = products.filter(function(product) {
+            return min <= product.price && product.price <= max;
+        })
+        displayProducts(ListProducts);
+    })
+
     //Price slider
     if (document.getElementById("slider-range") != null) {
         $("#slider-range").slider({
