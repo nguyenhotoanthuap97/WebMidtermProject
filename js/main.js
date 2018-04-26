@@ -595,6 +595,41 @@ jQuery(document).ready(function ($) {
         innerTxt = $(".product-list").html() + "<div class='col-md-3 col-sm-6'><div class='single-shop-product'><div class='product-upper'><img src='" + products[i].image + "' alt='" + products[i].name + "' title='" + products[i].name + "' class='product-img'/></div><h2><a href='" + link + "' class='product-link'>" + products[i].name + "</a></h2><div class='product-carousel-price'><del>$" + products[i].orginprice + ".00</del><ins>$" + products[i].price + ".00</ins></div><div class='product-option-shop'><a class='add_to_cart_button' data-quantity='1' data-product_sku='' data-product_id='70' rel='nofollow' href='./cart.html'>Add to cart</a></div></div></div>";
         $(".product-list").html(innerTxt);
     }
+
+    $('#btn_Search').click(function() {
+        let innerText = '';
+        let link = "./single-product.html";
+        let key = $('#search-input').val();
+        let selectType = $('.search-type-btn').text();
+        let check = false;
+
+        if (selectType === 'Sản phẩm') {
+            for (let product of products) {
+                if (product.name.indexOf(key) !== -1) {
+                    innerText += "<div class='col-md-3 col-sm-6'><div class='single-shop-product'><div class='product-upper'><img src='" + product.image + "' alt='" + product.name + "' title='" + product.name + "' class='product-img'/></div><h2><a href='" + link + "' class='product-link'>" + product.name + "</a></h2><div class='product-carousel-price'><del>$" + product.orginprice + ".00</del><ins>$" + product.price + ".00</ins></div><div class='product-option-shop'><a class='add_to_cart_button' data-quantity='1' data-product_sku='' data-product_id='70' rel='nofollow' href='./cart.html'>Add to cart</a></div></div></div>";
+                    $(".product-list").html(innerText);
+                    check = true;
+                }
+            }
+            if (check == false) {
+                $(".product-list").html('<h4 style="color: red">Không tìm thấy sản phẩm</h4>');                
+            }
+        }
+
+        else {
+            for (let product of products) {
+                debugger;
+                if (product.brand.indexOf(key) !== -1) {
+                    innerText += "<div class='col-md-3 col-sm-6'><div class='single-shop-product'><div class='product-upper'><img src='" + product.image + "' alt='" + product.name + "' title='" + product.name + "' class='product-img'/></div><h2><a href='" + link + "' class='product-link'>" + product.name + "</a></h2><div class='product-carousel-price'><del>$" + product.orginprice + ".00</del><ins>$" + product.price + ".00</ins></div><div class='product-option-shop'><a class='add_to_cart_button' data-quantity='1' data-product_sku='' data-product_id='70' rel='nofollow' href='./cart.html'>Add to cart</a></div></div></div>";
+                    $(".product-list").html(innerText);
+                }
+            }
+            if (check == false) {
+                $(".product-list").html('<h4 style="color: red;">Không tìm thấy sản phẩm</h4>');                
+            }
+        }
+        
+    })
 });
 
 function otherAddress() {
