@@ -566,6 +566,7 @@ jQuery(document).ready(function ($) {
     //class filter click
     $('.classify').bind('click', function (event) {
         let type = $(this).text();
+        console.log(type.toLowerCase());
         let ListProducts = products.filter(function(product) {
             return product.class.toLowerCase().indexOf(type.toLowerCase()) !== -1;
         })
@@ -573,12 +574,42 @@ jQuery(document).ready(function ($) {
     })
 
     $('.filter-btn').bind('click', function(event) {
-        let min = $("#slider-range").slider("values", 0);
-        let max = $("#slider-range").slider("values", 1);
-        let ListProducts = products.filter(function(product) {
-            return min <= product.price && product.price <= max;
-        })
-        displayProducts(ListProducts);
+        let ListBrands = new Array();
+        let types = $('.checkbox-btn');
+        for(i = 0; i < types.length;i++)
+        {
+            if(types[i].checked === true){
+                let list = null
+                list = products.filter(function(product) {
+                return product.brand.toLowerCase().indexOf(types[i].classList[0]) !== -1;
+                })
+                for(j = 0; j < list.length;j++)
+                {
+                    ListBrands.push(list[j]);
+                }
+            }
+        }
+        let ListTypes = new Array();
+        for(i = 0; i < types.length;i++)
+        {
+            if(types[i].checked === true){
+                let list = null
+                list = ListBrands.filter(function(product) {
+                return product.class.toLowerCase().indexOf(types[i].classList[0]) !== -1;
+                })
+                for(j = 0; j < list.length;j++)
+                {
+                    ListTypes.push(list[j]);
+                }
+            }
+        }
+        let min =  $("#slider-range").slider("values", 0);
+        let max =  $("#slider-range").slider("values", 1);
+        let ListFinal = null
+        ListFinal = ListTypes.filter(function(product) {
+                return min <= product.price && product.price <= max;
+                })
+        displayProducts(ListFinal);
     })
 
     //Price slider
