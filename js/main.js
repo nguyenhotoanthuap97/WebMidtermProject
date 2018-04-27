@@ -441,6 +441,10 @@ var products = [{
     },
 ]
 
+var showProducts = [];
+
+var pNumber = 0;
+
 jQuery(document).ready(function ($) {
 
     // jQuery sticky Menu
@@ -530,7 +534,8 @@ jQuery(document).ready(function ($) {
         offset: 95
     })
 
-    loadShop(products);
+    showProducts = splitPage(products);
+    loadShop(showProducts, 0);
 
     //search type choosing
     $('.content-drop').bind('click', function (event) {
@@ -565,7 +570,10 @@ jQuery(document).ready(function ($) {
                     }
                 }
             }
-            loadShop(search_result);
+
+            showProducts = splitPage(search_result);
+
+            loadShop(showProducts, 0);
         }
     })
 
@@ -590,74 +598,74 @@ jQuery(document).ready(function ($) {
                 }
             }
         }
-        loadShop(search_result);
+        showProducts = splitPage(search_result);
+
+        loadShop(showProducts, 0);
     })
 
     //Menu click
-    $('.content-drop-small').bind('click', function(event) {
-        window.location.replace('./shop.html')
+    $('.content-drop-small').bind('click', function (event) {
+        window.location.replace('./shop.html');
     })
 
     //brand filter click
     $('.brand').bind('click', function (event) {
         let type = $(this).text();
-        let ListProducts = products.filter(function(product) {
+        let ListProducts = products.filter(function (product) {
             return product.brand.toLowerCase().indexOf(type.toLowerCase()) !== -1;
         })
-        displayProducts(ListProducts);
+        showProducts = splitPage(ListProducts);
+
+        loadShop(showProducts, 0);
     })
 
     //class filter click
     $('.classify').bind('click', function (event) {
         let type = $(this).text();
         console.log(type.toLowerCase());
-        let ListProducts = products.filter(function(product) {
+        let ListProducts = products.filter(function (product) {
             return product.class.toLowerCase().indexOf(type.toLowerCase()) !== -1;
         })
-        displayProducts(ListProducts);
+        showProducts = splitPage(ListProducts);
+
+        loadShop(showProducts, 0);
     })
 
-    $('.filter-btn').bind('click', function(event) {
+    $('.filter-btn').bind('click', function (event) {
         let ListBrands = new Array();
         let types = $('.checkbox-btn');
-        for(i = 0; i < types.length;i++)
-        {
-            if(types[i].checked === true){
+        for (i = 0; i < types.length; i++) {
+            if (types[i].checked === true) {
                 let list = null
-                list = products.filter(function(product) {
-                return product.brand.toLowerCase().indexOf(types[i].classList[0]) !== -1;
+                list = products.filter(function (product) {
+                    return product.brand.toLowerCase().indexOf(types[i].classList[0]) !== -1;
                 })
-                for(j = 0; j < list.length;j++)
-                {
+                for (j = 0; j < list.length; j++) {
                     ListBrands.push(list[j]);
                 }
             }
         }
         let ListTypes = new Array();
-        for(i = 0; i < types.length;i++)
-        {
-            if(types[i].checked === true){
+        for (i = 0; i < types.length; i++) {
+            if (types[i].checked === true) {
                 let list = null
-                list = ListBrands.filter(function(product) {
-                return product.class.toLowerCase().indexOf(types[i].classList[0]) !== -1;
+                list = ListBrands.filter(function (product) {
+                    return product.class.toLowerCase().indexOf(types[i].classList[0]) !== -1;
                 })
-                for(j = 0; j < list.length;j++)
-                {
+                for (j = 0; j < list.length; j++) {
                     ListTypes.push(list[j]);
                 }
             }
         }
-        let min =  $("#slider-range").slider("values", 0);
-        let max =  $("#slider-range").slider("values", 1);
+        let min = $("#slider-range").slider("values", 0);
+        let max = $("#slider-range").slider("values", 1);
         let ListFinal = null
-        ListFinal = ListTypes.filter(function(product) {
-                return min <= product.price && product.price <= max;
-                })
-        if (ListFinal.length === 0) {
-                $(".product-list").html('<h4 style="color: red;">Không tìm thấy sản phẩm</h4>');                
-            }
-        else
-            displayProducts(ListFinal);
+        ListFinal = ListTypes.filter(function (product) {
+            return min <= product.price && product.price <= max;
+        })
+        showProducts = splitPage(ListFinal);
+
+        loadShop(showProducts, 0);
     })
 
     //Price slider
@@ -674,35 +682,37 @@ jQuery(document).ready(function ($) {
         $("#amount").val("$" + $("#slider-range").slider("values", 0) +
             " - $" + $("#slider-range").slider("values", 1));
     }
- 
+
     // Click button + in cart
-    $('.minus').bind('click', function() {
+    $('.minus').bind('click', function () {
         let count = $('.qty').val();
         if (count > 1) {
-            $('.qty').val(+count-1);
+            $('.qty').val(+count - 1);
         }
     });
 
     //Click buttin - in cart
-    $('.plus').bind('click', function(){
+    $('.plus').bind('click', function () {
         let count = $('.qty').val();
-        $('.qty').val(+count+1);
+        $('.qty').val(+count + 1);
     });
 
-    $('.remove').bind('click', function(){
+    $('.remove').bind('click', function () {
         let parent = $(this).parent().parent();
         parent.remove();
     });
 });
 
-function loadShop(product_list) {
+function loadShop(product_list, id) {
     //Load products
     var nP = product_list.length;
+    var prev = "<li><a href='#search-result' aria-label='Previous' id='back-btn' onclick='prevOnClick()'><span aria-hidden='true'>&laquo;</span></a></li>";
+    var next = "<li><a href='#search-result' aria-label='Next' id='forward-btn' onclick='nextOnClick()'><span aria-hidden='true'>&raquo;</span></a></li>";
     $(".product-list").empty();
     if (nP === 0) {
         $(".product-list").html("<h3>Không tìm thấy sản phẩm nào</h3>");
     }
-    for (var i = 0; i < nP; i++) {
+    for (var i = 0; i < product_list[id].length; i++) {
         var innerTxt = "";
         var link = "";
         if (i % 2 === 0) {
@@ -710,11 +720,21 @@ function loadShop(product_list) {
         } else {
             link = "./second-product.html";
         }
-        innerTxt = $(".product-list").html() + "<div class='col-md-3 col-sm-6'><div class='single-shop-product'><div class='product-upper'><img src='" + product_list[i].image + "' alt='" + product_list[i].name + "' title='" + product_list[i].name + "' class='product-img'/></div><h2><a href='" + link + "' class='product-link'>" + product_list[i].name + "</a></h2><div class='product-carousel-price'><del>$" + product_list[i].orginprice + ".00</del><ins>$" + product_list[i].price + ".00</ins></div><div class='product-option-shop'><a class='add_to_cart_button' data-quantity='1' data-product_sku='' data-product_id='70' rel='nofollow' href='./cart.html'>Add to cart</a></div></div></div>";
+        innerTxt = $(".product-list").html() + "<div class='col-md-3 col-sm-6'><div class='single-shop-product'><div class='product-upper'><img src='" + product_list[id][i].image + "' alt='" + product_list[id][i].name + "' title='" + product_list[id][i].name + "' class='product-img'/></div><h2><a href='" + link + "' class='product-link'>" + product_list[id][i].name + "</a></h2><div class='product-carousel-price'><del>$" + product_list[id][i].orginprice + ".00</del><ins>$" + product_list[id][i].price + ".00</ins></div><div class='product-option-shop'><a class='add_to_cart_button' data-quantity='1' data-product_sku='' data-product_id='70' rel='nofollow' href='./cart.html'>Add to cart</a></div></div></div>";
         $(".product-list").html(innerTxt);
     }
+    var navTxt = "" + prev;
+    for (var i = 0; i < nP; i++) {
+        if (i === id) {
+            pNumber = id;
+            navTxt += "<li class='active'><a href='#search-result' class='page-split' onclick='splitOnClick(" + i + ")'>" + (i + 1).toString() + "</a></li>";
+        } else {
+            navTxt += "<li><a href='#search-result' class='page-split' onclick='splitOnClick(" + i + ")'>" + (i + 1).toString() + "</a></li>";
+        }
+    }
+    navTxt += next;
+    $('.pagination').html(navTxt);
 }
-    
 
 function otherAddress() {
     if ($(".input-checkbox").is(":checked"))
@@ -741,35 +761,34 @@ function selectCountries() {
     processSelectCountries('#calc_shipping_country');
 }
 
-selectCountries();  
+selectCountries();
 
 (function ($) {
     "use strict";
 
     /*==================================================================
     [ Focus Contact2 ]*/
-    $('.input100').each(function(){
-        $(this).on('blur', function(){
-            if($(this).val().trim() != "") {
+    $('.input100').each(function () {
+        $(this).on('blur', function () {
+            if ($(this).val().trim() != "") {
                 $(this).addClass('has-val');
-            }
-            else {
+            } else {
                 $(this).removeClass('has-val');
             }
-        })    
+        })
     })
 
     /*==================================================================
     [ Validate ]*/
     var input = $('.validate-input .input100');
 
-    $('.validate-form').on('submit',function(){
+    $('.validate-form').on('submit', function () {
         var check = true;
 
-        for(var i=0; i<input.length; i++) {
-            if(validate(input[i]) == false){
+        for (var i = 0; i < input.length; i++) {
+            if (validate(input[i]) == false) {
                 showValidate(input[i]);
-                check=false;
+                check = false;
             }
         }
 
@@ -777,20 +796,19 @@ selectCountries();
     });
 
 
-    $('.validate-form .input100').each(function(){
-        $(this).focus(function(){
-           hideValidate(this);
+    $('.validate-form .input100').each(function () {
+        $(this).focus(function () {
+            hideValidate(this);
         });
     });
 
-    function validate (input) {
-        if($(input).attr('type') == 'email' || $(input).attr('name') == 'email') {
-            if($(input).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
+    function validate(input) {
+        if ($(input).attr('type') == 'email' || $(input).attr('name') == 'email') {
+            if ($(input).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
                 return false;
             }
-        }
-        else {
-            if($(input).val().trim() == ''){
+        } else {
+            if ($(input).val().trim() == '') {
                 return false;
             }
         }
@@ -807,27 +825,53 @@ selectCountries();
 
         $(thisAlert).removeClass('alert-validate');
     }
-    
+
 
     /*==================================================================
     [ Show / hide Form ]*/
-    
-    $('.contact100-btn-hide').on('click', function(){
+
+    $('.contact100-btn-hide').on('click', function () {
         $('.wrap-contact100').fadeOut(400);
     })
 
-    $('.contact100-btn-show').on('click', function(){
+    $('.contact100-btn-show').on('click', function () {
         $('.wrap-contact100').fadeIn(400);
     })
 
 })(jQuery);
 
-function displayProducts(products) {
-    let innerText = '';
-    let link = "./single-product.html";
-    
-    for (let product of products) {
-        innerText += "<div class='col-md-3 col-sm-6'><div class='single-shop-product'><div class='product-upper'><img src='" + product.image + "' alt='" + product.name + "' title='" + product.name + "' class='product-img'/></div><h2><a href='" + link + "' class='product-link'>" + product.name + "</a></h2><div class='product-carousel-price'><del>$" + product.orginprice + ".00</del><ins>$" + product.price + ".00</ins></div><div class='product-option-shop'><a class='add_to_cart_button' data-quantity='1' data-product_sku='' data-product_id='70' rel='nofollow' href='./cart.html'>Add to cart</a></div></div></div>";
-        $(".product-list").html(innerText);
+function splitPage(list) {
+    var result = [];
+    var count = 0;
+    var page = [];
+    for (var i = 0; i < list.length; i++) {
+        page.push(list[i]);
+        count++;
+        if (count === 12 || i === list.length - 1) {
+            result.push(page);
+            page = [];
+            count = 0;
+        }
     }
+    return result;
+}
+
+function splitOnClick(id) {
+    loadShop(showProducts, id);
+}
+
+function prevOnClick() {
+    if (pNumber === 0) {
+        pNumber = showProducts.length - 1;
+    }
+    else pNumber--;
+    loadShop(showProducts, pNumber);
+}
+
+function nextOnClick() {
+    if (pNumber === showProducts.length - 1) {
+        pNumber = 0;
+    }
+    else pNumber++;
+    loadShop(showProducts, pNumber);
 }
