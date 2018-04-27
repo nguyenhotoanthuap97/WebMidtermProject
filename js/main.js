@@ -597,20 +597,20 @@ jQuery(document).ready(function ($) {
     $('.content-drop-small').bind('click', function(event) {
         window.location.replace('./shop.html')
     })
+    
 
     //brand filter click
     $('.brand').bind('click', function (event) {
         let type = $(this).text();
         let ListProducts = products.filter(function(product) {
             return product.brand.toLowerCase().indexOf(type.toLowerCase()) !== -1;
-        })
+        });
         displayProducts(ListProducts);
     })
 
     //class filter click
     $('.classify').bind('click', function (event) {
         let type = $(this).text();
-        console.log(type.toLowerCase());
         let ListProducts = products.filter(function(product) {
             return product.class.toLowerCase().indexOf(type.toLowerCase()) !== -1;
         })
@@ -675,24 +675,50 @@ jQuery(document).ready(function ($) {
             " - $" + $("#slider-range").slider("values", 1));
     }
  
-    // Click button + in cart
+    // Click button - in cart
     $('.minus').bind('click', function() {
-        let count = $('.qty').val();
+        let count = $(this).parents('.cart_item').find('.qty').val();
+        let amount = $(this).parents('.cart_item').find('.amount').attr('money');
         if (count > 1) {
-            $('.qty').val(+count-1);
+            count--;
+            $('.qty').val(count);
+            let money = +count * +amount;
+            $(this).parents('.cart_item').find('.amount_count').attr('money', money);
+            $(this).parents('.cart_item').find('.amount_count').text(addDotIntoMoney(money) + ' đ');
         }
     });
 
-    //Click buttin - in cart
+    //Click button + in cart
     $('.plus').bind('click', function(){
-        let count = $('.qty').val();
-        $('.qty').val(+count+1);
+        let count = $(this).parents('.cart_item').find('.qty').val();
+        let amount = $(this).parents('.cart_item').find('.amount').attr('money');
+        count++;
+        $('.qty').val(count);
+        let money = +count * +amount;
+        $(this).parents('.cart_item').find('.amount_count').attr('money', money);
+        $(this).parents('.cart_item').find('.amount_count').text(addDotIntoMoney(money) + ' đ');
     });
 
+    //Click button x in cart
     $('.remove').bind('click', function(){
         let parent = $(this).parent().parent();
         parent.remove();
     });
+
+    $('.update-button').bind('click', function() {
+        let amount_count = 0;
+        let total_money = 0;
+        let list_sp = $('.cart_item');
+        for (let i = 0; i < list_sp.length;i++) {
+            amount_count = list_sp[i].getElementsByClassName('amount_count')[i].getAttribute('money');
+            total_money += +amount_count;
+        }
+        console.log($('.cart-subtotal').find('.amount'));
+        $('.cart-subtotal').find('.amount').val(total_money);
+        $('.cart-subtotal').find('.amount').text(addDotIntoMoney(total_money) + ' đ');
+        $('.order-total').find('.amount').val(total_money);
+        $('.order-total').find('.amount').text(addDotIntoMoney(total_money) + ' đ');
+    })
 });
 
 function loadShop(product_list) {
@@ -828,6 +854,12 @@ function displayProducts(products) {
     
     for (let product of products) {
         innerText += "<div class='col-md-3 col-sm-6'><div class='single-shop-product'><div class='product-upper'><img src='" + product.image + "' alt='" + product.name + "' title='" + product.name + "' class='product-img'/></div><h2><a href='" + link + "' class='product-link'>" + product.name + "</a></h2><div class='product-carousel-price'><del>$" + product.orginprice + ".00</del><ins>$" + product.price + ".00</ins></div><div class='product-option-shop'><a class='add_to_cart_button' data-quantity='1' data-product_sku='' data-product_id='70' rel='nofollow' href='./cart.html'>Add to cart</a></div></div></div>";
-        $(".product-list").html(innerText);
     }
+    $(".product-list").html(innerText);
+}
+
+function addDotIntoMoney(money) {
+    var parts = money.toString().split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    return parts.join(".");
 }

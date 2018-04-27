@@ -733,6 +733,22 @@ div.navbar-nav li.active
     border-color: #666
 }
 
+.newsletter-form input[type="button"] {
+    background: none repeat scroll 0 0 #1abc9c;
+    border: medium none;
+    color: #fff;
+    display: inline-block;
+    font-size: 18px;
+    padding: 7px 20px;
+    text-transform: uppercase;
+    border: 1px solid #1abc9c;
+}
+
+.newsletter-form input[type="button"]:hover {
+    background: #222;
+    border-color: #666
+}
+
 .newsletter-form {
     margin-top: 25px;
 }
@@ -866,6 +882,19 @@ button[type=submit] {
 
 input[type="submit"]:hover,
 button[type=submit]:hover {
+    background-color: #222
+}
+
+.update-button, .checkout-button {
+    background: none repeat scroll 0 0 #1abc9c;
+    border: medium none;
+    color: #fff;
+    padding: 11px 20px;
+    text-transform: uppercase;
+}
+
+.checkout-button:hover,
+.update-button:hover {
     background-color: #222
 }
 
@@ -1055,12 +1084,26 @@ form.cart {
     display: block;
 }
 
+
 .submit-review input[type="text"],
 .submit-review input[type="email"],
 .submit-review textarea {
     margin-bottom: 20px;
     width: 100%;
 }
+
+.button-review label {
+    display: block;
+}
+
+
+.button-review input[type="text"],
+.button-review input[type="email"],
+.button-review textarea {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
 
 .rating-chooser {
     margin-bottom: 30px;
@@ -1075,6 +1118,10 @@ form.cart {
 }
 
 .submit-review textarea {
+    height: 105px;
+}
+
+.button-review textarea {
     height: 105px;
 }
 
