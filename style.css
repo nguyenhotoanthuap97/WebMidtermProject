@@ -1467,8 +1467,6 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button {
     margin-left: 50px;
     font-size: 20px;
     width: 100%;
-    clear: both;
-    margin-right: 100%;
 }
 
 .search-type .search-label {
