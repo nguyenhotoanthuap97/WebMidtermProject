@@ -261,8 +261,8 @@ div.navbar-nav li.active
 
 .zigzag-bottom {
     background: none repeat scroll 0 0 #1abc9c;
-    bottom: -80px;
-    height: 165px;
+    bottom: -65px;
+    height: 130px;
     left: -5%;
     position: absolute;
     transform: rotate(3deg);
@@ -396,8 +396,6 @@ div.navbar-nav li.active
     font-family: "Open Sans", sans-serif;
     font-size: 50px;
     font-weight: 100;
-    margin-top: 50px;
-    margin-bottom: 50px;
     text-align: center;
 }
 
@@ -564,7 +562,7 @@ div.navbar-nav li.active
 }
 
 .maincontent-area {
-    padding-bottom: 170px
+    padding-bottom: 150px
 }
 
 .product-wid-title {
@@ -637,9 +635,6 @@ div.navbar-nav li.active
     padding-top: 30px;
 }
 
-.product-widget-area .zigzag-bottom {
-    background: #333
-}
 
 .footer-top-area .zigzag-bottom {
     background: #000
@@ -734,6 +729,22 @@ div.navbar-nav li.active
 }
 
 .newsletter-form input[type="submit"]:hover {
+    background: #222;
+    border-color: #666
+}
+
+.newsletter-form input[type="button"] {
+    background: none repeat scroll 0 0 #1abc9c;
+    border: medium none;
+    color: #fff;
+    display: inline-block;
+    font-size: 18px;
+    padding: 7px 20px;
+    text-transform: uppercase;
+    border: 1px solid #1abc9c;
+}
+
+.newsletter-form input[type="button"]:hover {
     background: #222;
     border-color: #666
 }
@@ -871,6 +882,19 @@ button[type=submit] {
 
 input[type="submit"]:hover,
 button[type=submit]:hover {
+    background-color: #222
+}
+
+.update-button, .checkout-button {
+    background: none repeat scroll 0 0 #1abc9c;
+    border: medium none;
+    color: #fff;
+    padding: 11px 20px;
+    text-transform: uppercase;
+}
+
+.checkout-button:hover,
+.update-button:hover {
     background-color: #222
 }
 
@@ -1060,12 +1084,26 @@ form.cart {
     display: block;
 }
 
+
 .submit-review input[type="text"],
 .submit-review input[type="email"],
 .submit-review textarea {
     margin-bottom: 20px;
     width: 100%;
 }
+
+.button-review label {
+    display: block;
+}
+
+
+.button-review input[type="text"],
+.button-review input[type="email"],
+.button-review textarea {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
 
 .rating-chooser {
     margin-bottom: 30px;
@@ -1080,6 +1118,10 @@ form.cart {
 }
 
 .submit-review textarea {
+    height: 105px;
+}
+
+.button-review textarea {
     height: 105px;
 }
 
@@ -1473,11 +1515,15 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button {
 }
 
 .drop-type:hover .dropdown-content-type {
-    display: block;
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0%);
 }
 
 .drop-brand:hover .dropdown-content-brand {
-    display: block;
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0%);
 }
 
 .dropdown-content {
@@ -1494,16 +1540,18 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button {
 }
 
 .dropdown-content-type, .dropdown-content-brand {
-    display: none;
+    visibility: hidden;
+    opacity: 0;
     position: absolute;
     background-color: white;
     width: 150px;
     box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
-    height: auto;
+    transform: translateY(-2em);
     z-index: 1;
     top: 60px;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
+    transition: all 0.3s ease-in-out;
 }
 
 .content-drop, .content-drop-small {
