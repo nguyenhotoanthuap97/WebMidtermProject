@@ -405,7 +405,7 @@ var products = [{
         price: 1249,
         orginprice: 1299,
         brand: "Apple",
-        class: "Business"
+        class: "Ultrabook"
     },
     {
         name: "Macbook Air 2",
@@ -413,7 +413,7 @@ var products = [{
         price: 1399,
         orginprice: 1429,
         brand: "Apple",
-        class: "Business"
+        class: "Ultrabook"
     },
     {
         name: "Macbook Pro 3",
@@ -530,11 +530,13 @@ jQuery(document).ready(function ($) {
         offset: 95
     })
 
+    loadShop(products);
+
     //search type choosing
     $('.content-drop').bind('click', function (event) {
         var selected = $(this).text();
         $('.dropdown-text').text(selected);
-        $('#search-input').attr('placeholder', "Tên " + selected + "...");
+        $('#search-input').attr('placeholder', "Tên " + selected.toLowerCase() + "...");
     });
 
     //hide other address
@@ -543,15 +545,57 @@ jQuery(document).ready(function ($) {
     //search Enter
     $('#search-input').keypress(function (k) {
         if (k.which === 13) {
-            var val = $('#search-input').val();
-            window.location.replace("./shop.html#search-result");
+            k.preventDefault();
+            $('html, body').animate({
+                scrollTop: $('.single-product-area').offset().top
+            }, 500);
+
+            var val = $('#search-input').val().toLowerCase();
+            var search_result = [];
+            if ($('.dropdown-text').text() === "Sản phẩm") {
+                for (var i = 0; i < products.length; i++) {
+                    if (products[i].name.toLowerCase().includes(val)) {
+                        search_result.push(products[i]);
+                    }
+                }
+            } else {
+                for (var i = 0; i < products.length; i++) {
+                    if (products[i].brand.toLowerCase().includes(val)) {
+                        search_result.push(products[i]);
+                    }
+                }
+            }
+            loadShop(search_result);
         }
     })
 
     //search btn press
     $('.click').bind('click', function (event) {
-        var val = $('#search-input').val();
-        window.location.replace("./shop.html#search-result");
+        event.preventDefault();
+        $('html, body').animate({
+            scrollTop: $('.single-product-area').offset().top
+        }, 500);
+        var val = $('#search-input').val().toLowerCase();
+        var search_result = [];
+        if ($('.dropdown-text').text() === "Sản phẩm") {
+            for (var i = 0; i < products.length; i++) {
+                if (products[i].name.toLowerCase().includes(val)) {
+                    search_result.push(products[i]);
+                }
+            }
+        } else {
+            for (var i = 0; i < products.length; i++) {
+                if (products[i].brand.toLowerCase().includes(val)) {
+                    search_result.push(products[i]);
+                }
+            }
+        }
+        loadShop(search_result);
+    })
+
+    //Menu click
+    $('.content-drop-small').bind('click', function(event) {
+        window.location.replace('./shop.html')
     })
 
     //brand filter click
@@ -580,49 +624,40 @@ jQuery(document).ready(function ($) {
         $("#amount").val("$" + $("#slider-range").slider("values", 0) +
             " - $" + $("#slider-range").slider("values", 1));
     }
+});
 
+function loadShop(product_list) {
     //Load products
-    var nP = products.length;
+    var nP = product_list.length;
+    $(".product-list").empty();
+    if (nP === 0) {
+        $(".product-list").html("Không tìm thấy sản phẩm nào");
+    }
     for (var i = 0; i < nP; i++) {
         var innerTxt = "";
         var link = "";
-        if (i % 2 ===  0) {
+        if (i % 2 === 0) {
             link = "./single-product.html";
-        }
-        else {
+        } else {
             link = "./second-product.html";
         }
-        innerTxt = $(".product-list").html() + "<div class='col-md-3 col-sm-6'><div class='single-shop-product'><div class='product-upper'><img src='" + products[i].image + "' alt='" + products[i].name + "' title='" + products[i].name + "' class='product-img'/></div><h2><a href='" + link + "' class='product-link'>" + products[i].name + "</a></h2><div class='product-carousel-price'><del>$" + products[i].orginprice + ".00</del><ins>$" + products[i].price + ".00</ins></div><div class='product-option-shop'><a class='add_to_cart_button' data-quantity='1' data-product_sku='' data-product_id='70' rel='nofollow' href='./cart.html'>Add to cart</a></div></div></div>";
+        innerTxt = $(".product-list").html() + "<div class='col-md-3 col-sm-6'><div class='single-shop-product'><div class='product-upper'><img src='" + product_list[i].image + "' alt='" + product_list[i].name + "' title='" + product_list[i].name + "' class='product-img'/></div><h2><a href='" + link + "' class='product-link'>" + product_list[i].name + "</a></h2><div class='product-carousel-price'><del>$" + product_list[i].orginprice + ".00</del><ins>$" + product_list[i].price + ".00</ins></div><div class='product-option-shop'><a class='add_to_cart_button' data-quantity='1' data-product_sku='' data-product_id='70' rel='nofollow' href='./cart.html'>Add to cart</a></div></div></div>";
         $(".product-list").html(innerTxt);
     }
-});
+}
 
 function otherAddress() {
     if ($(".input-checkbox").is(":checked"))
         $(".shipping_address").show();
     else
-        $(".shipping_address").hide();        
-} 
+        $(".shipping_address").hide();
+}
 
 function processSelectCountries(id) {
-    const country_list = ["Afghanistan","Albania","Algeria","Andorra","Angola","Anguilla","Antigua &amp; Barbuda","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahamas"
-		,"Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bermuda","Bhutan","Bolivia","Bosnia &amp; Herzegovina","Botswana","Brazil","British Virgin Islands"
-		,"Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Canada","Cape Verde","Cayman Islands","Chad","Chile","China","Colombia","Congo","Cook Islands","Costa Rica"
-		,"Cote D Ivoire","Croatia","Cruise Ship","Cuba","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea"
-		,"Estonia","Ethiopia","Falkland Islands","Faroe Islands","Fiji","Finland","France","French Polynesia","French West Indies","Gabon","Gambia","Georgia","Germany","Ghana"
-		,"Gibraltar","Greece","Greenland","Grenada","Guam","Guatemala","Guernsey","Guinea","Guinea Bissau","Guyana","Haiti","Honduras","Hong Kong","Hungary","Iceland","India"
-		,"Indonesia","Iran","Iraq","Ireland","Isle of Man","Israel","Italy","Jamaica","Japan","Jersey","Jordan","Kazakhstan","Kenya","Kuwait","Kyrgyz Republic","Laos","Latvia"
-		,"Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macau","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Mauritania"
-		,"Mauritius","Mexico","Moldova","Monaco","Mongolia","Montenegro","Montserrat","Morocco","Mozambique","Namibia","Nepal","Netherlands","Netherlands Antilles","New Caledonia"
-		,"New Zealand","Nicaragua","Niger","Nigeria","Norway","Oman","Pakistan","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal"
-		,"Puerto Rico","Qatar","Reunion","Romania","Russia","Rwanda","Saint Pierre &amp; Miquelon","Samoa","San Marino","Satellite","Saudi Arabia","Senegal","Serbia","Seychelles"
-		,"Sierra Leone","Singapore","Slovakia","Slovenia","South Africa","South Korea","Spain","Sri Lanka","St Kitts &amp; Nevis","St Lucia","St Vincent","St. Lucia","Sudan"
-		,"Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor L'Este","Togo","Tonga","Trinidad &amp; Tobago","Tunisia"
-		,"Turkey","Turkmenistan","Turks &amp; Caicos","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States","United States Minor Outlying Islands","Uruguay","Uzbekistan","Venezuela","Vietnam","Virgin Islands (US)"
-        ,"Yemen","Zambia","Zimbabwe"];
-    
+    const country_list = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Anguilla", "Antigua &amp; Barbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia &amp; Herzegovina", "Botswana", "Brazil", "British Virgin Islands", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Cayman Islands", "Chad", "Chile", "China", "Colombia", "Congo", "Cook Islands", "Costa Rica", "Cote D Ivoire", "Croatia", "Cruise Ship", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Estonia", "Ethiopia", "Falkland Islands", "Faroe Islands", "Fiji", "Finland", "France", "French Polynesia", "French West Indies", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guam", "Guatemala", "Guernsey", "Guinea", "Guinea Bissau", "Guyana", "Haiti", "Honduras", "Hong Kong", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Isle of Man", "Israel", "Italy", "Jamaica", "Japan", "Jersey", "Jordan", "Kazakhstan", "Kenya", "Kuwait", "Kyrgyz Republic", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macau", "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Mauritania", "Mauritius", "Mexico", "Moldova", "Monaco", "Mongolia", "Montenegro", "Montserrat", "Morocco", "Mozambique", "Namibia", "Nepal", "Netherlands", "Netherlands Antilles", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Norway", "Oman", "Pakistan", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Puerto Rico", "Qatar", "Reunion", "Romania", "Russia", "Rwanda", "Saint Pierre &amp; Miquelon", "Samoa", "San Marino", "Satellite", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "South Africa", "South Korea", "Spain", "Sri Lanka", "St Kitts &amp; Nevis", "St Lucia", "St Vincent", "St. Lucia", "Sudan", "Suriname", "Swaziland", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor L'Este", "Togo", "Tonga", "Trinidad &amp; Tobago", "Tunisia", "Turkey", "Turkmenistan", "Turks &amp; Caicos", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "United States Minor Outlying Islands", "Uruguay", "Uzbekistan", "Venezuela", "Vietnam", "Virgin Islands (US)", "Yemen", "Zambia", "Zimbabwe"];
+
     let select = $(id);
-    for (country of  country_list) {
+    for (country of country_list) {
         var opt = document.createElement('option');
         opt.value = country;
         opt.text = country;
@@ -636,4 +671,4 @@ function selectCountries() {
     processSelectCountries('#calc_shipping_country');
 }
 
-selectCountries();  
+selectCountries();

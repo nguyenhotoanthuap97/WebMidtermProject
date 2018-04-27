@@ -25,6 +25,10 @@ a:focus {
     outline: 0px solid
 }
 
+.dropdown-text-type:hover , .dropdown-text-brand:hover {
+    text-decoration: none;
+}
+
 img {
     max-width: 100%;
     height: auto;
@@ -77,6 +81,10 @@ body {
 
 .user-menu li a i.fa {
     margin-right: 5px;
+}
+
+.drop-type, .drop-brand {
+    margin-top: 20px;
 }
 
 .header-right ul.list-inline {
@@ -187,12 +195,22 @@ body {
     background: none repeat scroll 0 0 #000;
 }
 
-
 .mainmenu-area ul.navbar-nav li a {
     color: #fff;
     font-size: 16px;
     font-weight: 700;
     padding: 20px;
+    width: 150px;
+    text-align: center;
+}
+
+.dropdown-text-brand, .dropdown-text-type {
+    display: block;
+    padding: 20px;
+    width: 150px;
+    height: 60px;
+    text-align: center;
+    margin-top: -20px;
 }
 
 .mainmenu-area ul.navbar-nav li:hover a,
@@ -225,7 +243,6 @@ div.navbar-nav li.active
     overflow: hidden
 }
 
-.zigzag-bottom {}
 
 .slide-text-wrapper {
     height: 700px;
@@ -480,7 +497,6 @@ div.navbar-nav li.active
     overflow: hidden;
 }
 
-.single-product:hover {}
 
 .single-product:hover .product-hover a.add-to-cart-link {
     top: 32%;
@@ -523,6 +539,10 @@ div.navbar-nav li.active
 
 .brand-list {
     padding-top: 40px;
+}
+
+.owl-stage {
+    background-color: #f4f4f4;
 }
 
 .brand-list .owl-nav {
@@ -1383,7 +1403,8 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button {
     color: #1abc9c;
 }
 
-.row {
+#search-area {
+    height: 110px;
     padding-bottom: 20px;
 }
 
@@ -1425,7 +1446,7 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button {
     border-bottom-left-radius: 4px;
 }
 
-.search-type-btn.click.col-md-6 {
+.search-type-btn.click.col-md-6, .click-link {
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
     margin-left: 0px;
@@ -1437,12 +1458,21 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button {
     color: #1abc9c;
 }
 
-.search-type-btn.click.col-md-6:hover {
+.search-type-btn.click.col-md-6:hover, .click-link:hover {
     background-color: rgb(31, 31, 31);
+    text-decoration: none;
     color: #67ddc5;
 }
 
 .dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.drop-type:hover .dropdown-content-type {
+    display: block;
+}
+
+.drop-brand:hover .dropdown-content-brand {
     display: block;
 }
 
@@ -1459,7 +1489,20 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button {
     border-radius: 4px;
 }
 
-.content-drop {
+.dropdown-content-type, .dropdown-content-brand {
+    display: none;
+    position: absolute;
+    background-color: white;
+    width: 150px;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+    height: auto;
+    z-index: 1;
+    top: 60px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.content-drop, .content-drop-small {
     display: block;
     font-size: 16px;
     font-weight: 700;
@@ -1473,10 +1516,11 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button {
     cursor: pointer;
 }
 
-.content-drop:hover {
+.content-drop:hover, .content-drop-small:hover {
     color: #fff;
     background-color: #01bc9c;
 }
+
 /********************************/
 /*CSS cho phần nội dung trang shop*/
 .panel-heading {
@@ -1494,7 +1538,7 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button {
     background-color: #01bc9c;
 }
 
-.dell, .asus, .acer, .hp, .msi, .apple, .business, .gaming, .workstation {
+.dell, .asus, .acer, .hp, .msi, .apple, .business, .gaming, .workstation, .ultrabook {
     display: inline;
     margin-left: 10px;
     padding: 10px 0;
@@ -1505,7 +1549,7 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button {
     cursor: pointer;    
 }
 
-.dell:hover, .asus:hover, .acer:hover, .hp:hover, .msi:hover, .apple:hover, .business:hover, .gaming:hover, .workstation:hover, .list-group-item.click-box:hover {
+.dell:hover, .asus:hover, .acer:hover, .hp:hover, .msi:hover, .apple:hover, .business:hover, .gaming:hover, .workstation:hover, .ultrabook:hover, .list-group-item.click-box:hover {
     background-color: #01bc9c;
     color: white;
     font-weight: 700;
