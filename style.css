@@ -1468,11 +1468,13 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button {
 }
 
 .drop-type:hover .dropdown-content-type {
+    visibility: visible;
     opacity: 1;
     transform: translateY(0%);
 }
 
 .drop-brand:hover .dropdown-content-brand {
+    visibility: visible;
     opacity: 1;
     transform: translateY(0%);
 }
@@ -1491,6 +1493,7 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button {
 }
 
 .dropdown-content-type, .dropdown-content-brand {
+    visibility: hidden;
     opacity: 0;
     position: absolute;
     background-color: white;
