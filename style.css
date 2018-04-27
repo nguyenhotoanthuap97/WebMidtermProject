@@ -116,6 +116,7 @@ body {
     text-transform: uppercase;
     width: 100%;
     z-index: 999;
+    height: 60px;
 }
 
 
@@ -364,6 +365,10 @@ div.navbar-nav li.active
     padding: 0px 0 200px;
 }
 
+.brands-area img {
+    width: 200px;
+}
+
 .promo-area .zigzag-bottom,
 .brands-area .zigzag-bottom {
     background: #fff
@@ -428,10 +433,9 @@ div.navbar-nav li.active
     border-radius: 5px;
     color: #fff;
     display: block;
-    font-size: 16px;
+    font-size: 13px;
     left: 10%;
-    margin: 0;
-    padding: 10px;
+    padding: 7px;
     position: absolute;
     text-align: center;
     text-transform: uppercase;
@@ -542,7 +546,7 @@ div.navbar-nav li.active
 }
 
 .owl-stage {
-    background-color: #f4f4f4;
+    background-color: #fff;
 }
 
 .brand-list .owl-nav {
@@ -1754,7 +1758,7 @@ table.table-responsive-2 tfoot tr td span.sum {
 
 /*  */
 .maincontent-area .container {
-    background-color: #f4f4f4; 
+    background-color: #fff; 
     padding-top: 2%;
     padding-bottom: -2%;
 }
