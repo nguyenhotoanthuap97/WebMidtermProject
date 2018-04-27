@@ -261,8 +261,8 @@ div.navbar-nav li.active
 
 .zigzag-bottom {
     background: none repeat scroll 0 0 #1abc9c;
-    bottom: -80px;
-    height: 165px;
+    bottom: -65px;
+    height: 130px;
     left: -5%;
     position: absolute;
     transform: rotate(3deg);
@@ -396,8 +396,6 @@ div.navbar-nav li.active
     font-family: "Open Sans", sans-serif;
     font-size: 50px;
     font-weight: 100;
-    margin-top: 50px;
-    margin-bottom: 50px;
     text-align: center;
 }
 
@@ -564,7 +562,7 @@ div.navbar-nav li.active
 }
 
 .maincontent-area {
-    padding-bottom: 170px
+    padding-bottom: 150px
 }
 
 .product-wid-title {
@@ -637,9 +635,6 @@ div.navbar-nav li.active
     padding-top: 30px;
 }
 
-.product-widget-area .zigzag-bottom {
-    background: #333
-}
 
 .footer-top-area .zigzag-bottom {
     background: #000
