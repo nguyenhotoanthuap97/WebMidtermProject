@@ -646,6 +646,7 @@ jQuery(document).ready(function ($) {
         $(".product-list").html(innerTxt);
     }
 
+    //Search products
     $('#btn_Search').click(function() {
         let key = $('#search-input').val();
         let selectType = $('.search-type-btn').text();
@@ -669,8 +670,26 @@ jQuery(document).ready(function ($) {
                 $(".product-list").html('<h4 style="color: red;">Không tìm thấy sản phẩm</h4>');                
             }
         }
-        
-    })
+    });
+
+    // Click button + in cart
+    $('.minus').bind('click', function() {
+        let count = $('.qty').val();
+        if (count > 1) {
+            $('.qty').val(+count-1);
+        }
+    });
+
+    //Click buttin - in cart
+    $('.plus').bind('click', function(){
+        let count = $('.qty').val();
+        $('.qty').val(+count+1);
+    });
+
+    $('.remove').bind('click', function(){
+        let parent = $(this).parent().parent();
+        parent.remove();
+    });
 });
 
 function otherAddress() {
