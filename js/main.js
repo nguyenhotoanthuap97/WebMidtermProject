@@ -713,6 +713,7 @@ jQuery(document).ready(function ($) {
         parent.remove();
     });
 
+    //Click Button Update Cart
     $('.update-button').bind('click', function() {
         let amount_count = 0;
         let total_money = 0;
@@ -726,6 +727,8 @@ jQuery(document).ready(function ($) {
         $('.cart-subtotal').find('.amount').text(addDotIntoMoney(total_money) + ' đ');
         $('.order-total').find('.amount').val(total_money);
         $('.order-total').find('.amount').text(addDotIntoMoney(total_money) + ' đ');
+        $('.cart-amunt').val(total_money);
+        $('.cart-amunt').text(total_money / 1000000 + ' triệu')
     });
 
     
