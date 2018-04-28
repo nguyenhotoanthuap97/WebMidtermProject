@@ -126,16 +126,12 @@ body {
 }
 
 .logo h1 a {
-    color: #999;
+    color: #1abc9c;
 }
 
 .logo h1 a:hover {
     text-decoration: none;
     opacity: .7
-}
-
-.logo h1 a span {
-    color: #1abc9c;
 }
 
 .shopping-item {
