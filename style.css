@@ -1879,6 +1879,7 @@ table.table-responsive-2 tfoot tr td span.sum {
         margin-bottom: 10%;
         text-align: center;
         border-radius: 3%;
+        border: 1px #ddd solid;
     }
 
     .social-box i {
