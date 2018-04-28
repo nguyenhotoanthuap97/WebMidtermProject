@@ -65,12 +65,14 @@ const provinces = ['An Giang',
 
 function addProvinceIntoSelect(provinces) {
     let select = document.getElementById('sel_City_Address');
+    if (select == null)
+        return;
     var opt;
     for (province of provinces) {
         opt = document.createElement('option');
         opt.value = province;
         opt.text = province;
-        select.appendChild(opt);
+        select.append(opt);
     }
 }
 
